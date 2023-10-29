@@ -1,0 +1,63 @@
+<div class="container mt-2" style="margin: 0 auto;">
+    <span class="alert alert-dark p-2" style="font-weight: 1000">{{getTitle()}}</span>
+    <br>
+    <br>
+    <h3>{{getBrackets().curlyBracketR}}</h3>
+    <br>
+
+    <ul class="list-group">
+      <li class="list-group-item">{{getBrand()}}</li>
+      <li class="list-group-item">{{getModel()}}</li>
+      <li class="list-group-item">{{getSystem()}}</li>
+      <li class="list-group-item">{{getPrice()}}</li>
+    </ul>
+
+    <form (ngSubmit)="setModel(model.value)" class="form-control w-25 p-2 mt-2">
+      <label class="form-label">Change Model</label>
+      <input class="form-control" type="text" #model>
+    </form>
+
+    <ul class="list-group mt-2">
+
+      <li class="list-group-item">{{getObjectsPhone().p1.getBrand()}}</li>
+      <li class="list-group-item">{{getObjectsPhone().p1.getModel()}}</li>
+      <li class="list-group-item">{{getObjectsPhone().p1.getSystem()}}</li>
+      <li class="list-group-item">{{getObjectsPhone().p1.getPrice()}}</li>
+
+      <li class="list-group-item">{{getObjectsPhone().p2.getBrand()}}</li>
+      <li class="list-group-item">{{getObjectsPhone().p2.getModel()}}</li>
+      <li class="list-group-item">{{getObjectsPhone().p2.getSystem()}}</li>
+      <li class="list-group-item">{{getObjectsPhone().p2.getPrice()}}</li>
+
+      <div *ngFor="let store of getObjectsPhone().stores">
+         <li class="list-group-item">{{store}}</li>
+      </div>
+
+    </ul>
+
+    <br>
+
+      <div *ngFor="let store of getObjectsPhone() | keyvalue">
+        <ul class="list-group">
+          <li class="list-group-item">{{JSON.stringify(store.value)}}</li>
+        </ul>
+      </div>
+
+    <br>
+
+      <div *ngFor="let counties of serviceFunctions.getCountries() ; let counter = index ;">
+        <ul class="list-group w-25">
+          <li class="list-group-item">{{(counter+1)}}. {{counties.country}}</li>
+          <div *ngFor="let cities of counties.city ;">
+            <li class="list-group-item">{{cities}}</li>
+          </div>
+        </ul>
+      </div>
+
+    <br>
+    <h3>{{getBrackets().curlyBracketL}}</h3>
+</div>
+
+<div class="p-3">
+  <app-attributes-functions-first></app-attributes-functions-first>
+</div>

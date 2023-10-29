@@ -1,0 +1,56 @@
+<div class="container mt-2" style="margin: 0 auto;">
+  <span class="alert alert-success p-2" style="font-weight: 1000">{{getTitle()}}</span>
+  <br>
+  <br>
+  <h3>{{brackets.curlyBracketR}}</h3>
+  <br>
+
+  <!-- ## Note : #<argument name>="" must be same argument name in method(ngSubmit)="" -->
+  <form class="form-control w-25 p-2" #formStudent="ngForm" (ngSubmit)="create(formStudent)">
+    <h5 class="alert alert-success text-center p-2">Form add the students</h5>
+    <label class="form-label" >Nickname</label>
+    <input class="form-control" type="text" name="nickname" ngModel #nickname="ngModel">
+    <label class="form-label" >Age</label>
+    <input class="form-control" type="number" name="age"  ngModel #age="ngModel" min="1" max="60">
+    <label class="form-label" >Year</label>
+    <input class="form-control" type="number" name="year"  ngModel #year="ngModel" min="1" max="4">
+    <!-- ## Note : name="<attribute name>" must be same #<attribute name> -->
+    <button class="btn btn-success p-1 mt-2">send</button>
+  </form>
+
+  <table class="table w-25">
+    <thead>
+      <tr>
+        <th>Nickname</th>
+        <th>Age</th>
+        <th>Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of reads()">
+        <td>{{student.getNickname()}}</td>
+        <td>{{student.getAge()}}</td>
+        <td>{{student.getYear()}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td></td>
+        <td></td>
+        <td rowspan="3">
+          <form (ngSubmit)="delete()">
+               <button class="btn btn-success p-1">delete</button>
+          </form>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="p-3">
+    <app-attribute-sub-first></app-attribute-sub-first>
+  </div>
+
+
+  <br>
+  <h3>{{brackets.curlyBracketL}}</h3>
+</div>
